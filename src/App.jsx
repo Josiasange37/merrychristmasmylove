@@ -105,7 +105,7 @@ function App() {
     jp: {
       title: "メリークリスマス",
       subtitle: "私のプリンセス エミリアへ",
-      click: "クリックしてね！",
+      click: "タップして開けてね！ ✨",
       name: "エミリア",
       message: "君は僕のすべてだよ、僕の美しいお姫様。君との毎日は魔法のようなアニメのアドベンチャーみたい。メリークリスマス、言葉にできないほど愛してるよ。",
       music: "きよしこの夜 (Lofi Remix)",
@@ -117,7 +117,7 @@ function App() {
         "君が僕の完璧なお姫様だから 👑"
       ],
       hug: "バーチャルハグ 🤗",
-      hugging: "ハグを送信中！ 💖"
+      hugging: "ハグを送信中... 💖"
     }
   };
 
@@ -238,133 +238,141 @@ function App() {
         transition={{ repeat: Infinity, duration: 3.5 }}
       />
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        className={`glass-morphism float ${isOpen ? 'love-letter-fold' : ''}`}
-        style={{
-          maxWidth: '500px',
-          padding: '2.5rem',
-          borderRadius: '30px',
-          textAlign: 'center',
-          position: 'relative',
-          zIndex: 10,
-          margin: '20px'
-        }}
-      >
-        <AnimatePresence mode="wait">
-          {!isOpen ? (
-            <motion.div
-              key="gift-closed"
-              initial={{ scale: 0.8 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 1.2, opacity: 0 }}
-              className="flex flex-col items-center"
-            >
-              <div style={{ marginBottom: '1.5rem' }}>
-                <Stars className="pink-gradient-text" style={{ width: '40px', height: '40px', marginBottom: '1rem' }} />
-                <h1 style={{ fontSize: '3rem', color: '#ff4d6d' }}>{t.title}</h1>
-                <h2 style={{ fontSize: '1.8rem', color: '#ff85a1' }}>{t.subtitle}</h2>
-              </div>
-
-              <div
-                onClick={handleOpenGift}
-                style={{
-                  cursor: 'pointer',
-                  padding: '1.8rem',
-                  borderRadius: '50%',
-                  background: 'rgba(255, 133, 161, 0.15)',
-                  display: 'inline-block',
-                }}
-                className="pulse-soft"
+      <div className="card-container">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className={`glass-morphism float ${isOpen ? 'love-letter-fold' : ''}`}
+          style={{
+            width: '100%',
+            borderRadius: '30px',
+            textAlign: 'center',
+            position: 'relative',
+            zIndex: 10,
+            padding: !isOpen ? '1.5rem' : 'initial' // Let CSS handle padding for love letter
+          }}
+        >
+          <AnimatePresence mode="wait">
+            {!isOpen ? (
+              <motion.div
+                key="gift-closed"
+                initial={{ scale: 0.8 }}
+                animate={{ scale: 1 }}
+                exit={{ scale: 1.2, opacity: 0 }}
+                className="flex flex-col items-center"
               >
-                <motion.div
-                  animate={{ rotate: [0, -8, 8, -8, 8, 0] }}
-                  transition={{ repeat: Infinity, duration: 1.5 }}
-                >
-                  <Gift style={{ width: '80px', height: '80px', color: '#ff4d6d' }} />
-                </motion.div>
-              </div>
-              <p style={{ marginTop: '1.2rem', color: '#ff85a1', fontSize: '1.2rem', fontWeight: 'bold' }}>{t.click}</p>
-            </motion.div>
-          ) : (
-            <motion.div
-              key="gift-open"
-              initial={{ opacity: 0, rotateX: 90 }}
-              animate={{ opacity: 1, rotateX: 0 }}
-              transition={{ duration: 0.8, type: "spring" }}
-            >
-              <div style={{ position: 'relative', marginBottom: '1.5rem', display: 'flex', justifyContent: 'center' }}>
-                <img
-                  src={emiliaImg}
-                  alt="Emilia"
+                <div style={{ marginBottom: '1.5rem' }}>
+                  <Stars className="pink-gradient-text" style={{ width: '40px', height: '40px', marginBottom: '1rem' }} />
+                  <h1 style={{ fontSize: '3rem', color: '#ff4d6d' }}>{t.title}</h1>
+                  <h2 style={{ fontSize: '1.8rem', color: '#ff85a1' }}>{t.subtitle}</h2>
+                </div>
+
+                <div
+                  onClick={handleOpenGift}
                   style={{
-                    width: '160px',
-                    height: '160px',
+                    cursor: 'pointer',
+                    padding: '1.8rem',
                     borderRadius: '50%',
-                    border: '5px solid white',
-                    boxShadow: '0 0 25px rgba(255, 77, 109, 0.5)',
-                    objectFit: 'cover'
+                    background: 'rgba(255, 133, 161, 0.15)',
+                    display: 'inline-block',
                   }}
-                />
-                <motion.div
-                  style={{ position: 'absolute', top: -10, right: '25%' }}
-                  animate={{ y: [0, -15, 0], scale: [1, 1.3, 1] }}
-                  transition={{ repeat: Infinity, duration: 1.2 }}
+                  className="pulse-soft"
                 >
-                  <Heart fill="#ff4d6d" style={{ color: '#ff4d6d', width: '35px', height: '35px' }} />
-                </motion.div>
-              </div>
+                  <motion.div
+                    animate={{ rotate: [0, -8, 8, -8, 8, 0] }}
+                    transition={{ repeat: Infinity, duration: 1.5 }}
+                  >
+                    <Gift style={{ width: '80px', height: '80px', color: '#ff4d6d' }} />
+                  </motion.div>
+                </div>
+                <p style={{ marginTop: '1.2rem', color: '#ff85a1', fontSize: '1.2rem', fontWeight: 'bold' }}>{t.click}</p>
+              </motion.div>
+            ) : (
+              <motion.div
+                key="gift-open"
+                initial={{ opacity: 0, rotateX: 90 }}
+                animate={{ opacity: 1, rotateX: 0 }}
+                transition={{ duration: 0.8, type: "spring" }}
+              >
+                <div style={{ position: 'relative', marginBottom: '1.5rem', display: 'flex', justifyContent: 'center' }}>
+                  <img
+                    src={emiliaImg}
+                    alt="Emilia"
+                    style={{
+                      width: '160px',
+                      height: '160px',
+                      borderRadius: '50%',
+                      border: '5px solid white',
+                      boxShadow: '0 0 25px rgba(255, 77, 109, 0.5)',
+                      objectFit: 'cover'
+                    }}
+                  />
+                  <motion.div
+                    style={{ position: 'absolute', top: -10, right: '25%' }}
+                    animate={{ y: [0, -15, 0], scale: [1, 1.3, 1] }}
+                    transition={{ repeat: Infinity, duration: 1.2 }}
+                  >
+                    <Heart fill="#ff4d6d" style={{ color: '#ff4d6d', width: '35px', height: '35px' }} />
+                  </motion.div>
+                </div>
 
-              {showText && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.4 }}
-                >
-                  <h1 style={{ fontSize: '3.2rem', color: '#ff4d6d', marginBottom: '0.2rem' }}>{t.name}</h1>
-                  <p className="script-font" style={{ fontSize: '1.6rem', color: '#ff4d6d', lineHeight: 1.4, marginBottom: '2rem', minHeight: '4.2rem' }}>
-                    "{displayedMessage}"
-                    <span className="typewriter-cursor"></span>
-                  </p>
+                {showText && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.4 }}
+                  >
+                    <h1 style={{ fontSize: '3.2rem', color: '#ff4d6d', marginBottom: '0.2rem' }}>{t.name}</h1>
+                    <p className="script-font" style={{
+                      fontSize: lang === 'jp' ? '1.2rem' : '1.6rem',
+                      color: '#ff4d6d',
+                      lineHeight: 1.5,
+                      marginBottom: '2rem',
+                      minHeight: '4.2rem',
+                      padding: '0 10px'
+                    }}>
+                      {lang === 'jp' ? '「' : '"'}{displayedMessage}{lang === 'jp' ? '」' : '"'}
+                      <span className="typewriter-cursor"></span>
+                    </p>
 
-                  <div className="reasons-container">
-                    <p style={{ color: '#ff4d6d', fontWeight: '800', marginBottom: '15px', fontSize: '1.1rem' }}>{t.reasonsTitle}</p>
-                    {t.reasons.map((reason, idx) => (
-                      <motion.div
-                        key={idx}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 1.5 + idx * 0.3 }}
-                        className="reason-card"
-                      >
-                        <Heart size={16} fill="#ff4d6d" style={{ display: 'inline', marginRight: '10px', verticalAlign: 'middle' }} />
-                        {reason}
+                    <div className="reasons-container">
+                      <p style={{ color: '#ff4d6d', fontWeight: '800', marginBottom: '15px', fontSize: '1.1rem' }}>{t.reasonsTitle}</p>
+                      {t.reasons.map((reason, idx) => (
+                        <motion.div
+                          key={idx}
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: 1.5 + idx * 0.3 }}
+                          className="reason-card"
+                        >
+                          <Heart size={16} fill="#ff4d6d" style={{ display: 'inline', marginRight: '10px', verticalAlign: 'middle' }} />
+                          {reason}
+                        </motion.div>
+                      ))}
+                    </div>
+
+                    <button className="hug-btn" onClick={handleHug}>
+                      <Heart fill="white" size={18} />
+                      {isHugging ? t.hugging : t.hug}
+                    </button>
+
+                    <div style={{ marginTop: '1.5rem', display: 'flex', justifyContent: 'center', gap: '20px' }}>
+                      <motion.div animate={{ rotate: 360 }} transition={{ duration: 5, repeat: Infinity, ease: "linear" }}>
+                        <Sparkles style={{ color: '#ff85a1' }} />
                       </motion.div>
-                    ))}
-                  </div>
-
-                  <button className="hug-btn" onClick={handleHug}>
-                    <Heart fill="white" size={18} />
-                    {isHugging ? t.hugging : t.hug}
-                  </button>
-
-                  <div style={{ marginTop: '1.5rem', display: 'flex', justifyContent: 'center', gap: '20px' }}>
-                    <motion.div animate={{ rotate: 360 }} transition={{ duration: 5, repeat: Infinity, ease: "linear" }}>
-                      <Sparkles style={{ color: '#ff85a1' }} />
-                    </motion.div>
-                    <Stars style={{ color: '#ff85a1' }} />
-                    <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 1, repeat: Infinity }}>
-                      <Heart style={{ color: '#ff4d6d' }} fill="#ff4d6d" />
-                    </motion.div>
-                  </div>
-                </motion.div>
-              )}
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.div>
+                      <Stars style={{ color: '#ff85a1' }} />
+                      <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 1, repeat: Infinity }}>
+                        <Heart style={{ color: '#ff4d6d' }} fill="#ff4d6d" />
+                      </motion.div>
+                    </div>
+                  </motion.div>
+                )}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
+      </div>
 
       <div style={{ position: 'fixed', bottom: '20px', zIndex: 5, color: 'white', display: 'flex', gap: '10px', opacity: 0.8 }}>
         <Music size={18} />
