@@ -32,23 +32,21 @@ h2,
 
 .glass-morphism {
   background: var(--glass);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border);
   box-shadow: 0 8px 32px 0 rgba(255, 77, 109, 0.2);
 }
 
 @keyframes float {
-  0% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
 
   50% {
-    transform: translateY(-15px);
-  }
-
-  100% {
-    transform: translateY(0px);
+    transform: translateY(-10px);
   }
 }
 
@@ -70,11 +68,11 @@ h2,
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('./assets/landscape.png');
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./assets/landscape.png');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .snow-overlay {
@@ -85,25 +83,24 @@ h2,
   height: 100%;
   pointer-events: none;
   z-index: 1;
-  background: transparent;
 }
 
 .language-toggle {
   position: fixed;
-  top: 20px;
-  right: 20px;
+  top: 15px;
+  right: 15px;
   display: flex;
-  gap: 10px;
+  gap: 8px;
   z-index: 100;
 }
 
 .lang-btn {
   background: var(--glass);
   border: 1px solid var(--glass-border);
-  padding: 8px 12px;
-  border-radius: 12px;
+  padding: 6px 10px;
+  border-radius: 10px;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   transition: all 0.3s ease;
   color: var(--pink-dark);
   font-weight: 600;
@@ -115,17 +112,18 @@ h2,
 }
 
 .reasons-container {
-  margin-top: 2rem;
-  padding: 1rem;
+  margin-top: 1.5rem;
+  padding: 0.5rem;
   border-top: 1px dashed var(--pink-primary);
 }
 
 .reason-card {
-  padding: 1rem;
-  margin: 10px 0;
+  padding: 0.8rem;
+  margin: 8px 0;
   background: rgba(255, 255, 255, 0.5);
-  border-radius: 15px;
+  border-radius: 12px;
   font-style: italic;
+  font-size: 0.9rem;
   color: var(--pink-dark);
 }
 
@@ -138,34 +136,32 @@ h2,
 
 .bear-sticker {
   position: fixed;
-  width: 120px;
+  width: 80px;
   height: auto;
   z-index: 100;
   pointer-events: none;
-  filter: drop-shadow(0 0 10px rgba(255, 133, 161, 0.3));
+  filter: drop-shadow(0 0 5px rgba(255, 133, 161, 0.3));
 }
 
 .bear-left {
-  bottom: 20px;
-  left: 20px;
+  bottom: 10px;
+  left: 10px;
 }
 
 .bear-right {
-  bottom: 20px;
-  right: 20px;
+  bottom: 10px;
+  right: 10px;
 }
 
 @keyframes pulse-soft {
-  0% {
+
+  0%,
+  100% {
     transform: scale(1);
   }
 
   50% {
     transform: scale(1.05);
-  }
-
-  100% {
-    transform: scale(1);
   }
 }
 
@@ -176,9 +172,9 @@ h2,
 .love-letter-fold {
   background: #fffafa;
   border: 4px solid var(--pink-primary);
-  box-shadow: 10px 10px 0px var(--pink-glow);
-  padding: 2rem;
-  transform: rotate(-1deg);
+  box-shadow: 6px 6px 0px var(--pink-glow);
+  padding: 1.5rem;
+  transform: rotate(-0.5deg);
 }
 
 .sakura {
@@ -187,43 +183,30 @@ h2,
   border-radius: 100% 0 100% 0;
   pointer-events: none;
   z-index: 2;
-  filter: blur(0.5px);
-  box-shadow: 0 0 5px rgba(255, 183, 197, 0.5);
 }
 
 .hug-btn {
-  margin-top: 1.5rem;
+  margin-top: 1.2rem;
   background: linear-gradient(45deg, #ff4d6d, #ff85a1);
   color: white;
   border: none;
-  padding: 12px 24px;
+  padding: 10px 20px;
   border-radius: 50px;
-  font-family: 'Inter', sans-serif;
   font-weight: 800;
-  font-size: 1rem;
+  font-size: 0.9rem;
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+  box-shadow: 0 4px 10px rgba(255, 77, 109, 0.3);
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   justify-content: center;
   width: 100%;
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.hug-btn:hover {
-  transform: scale(1.05) translateY(-3px);
-  box-shadow: 0 6px 20px rgba(255, 77, 109, 0.6);
-}
-
-.hug-btn:active {
-  transform: scale(0.95);
 }
 
 .typewriter-cursor {
   display: inline-block;
   width: 2px;
-  height: 1.4rem;
+  height: 1.2rem;
   background-color: var(--pink-dark);
   margin-left: 2px;
   animation: blink 1s step-end infinite;
@@ -231,12 +214,6 @@ h2,
 }
 
 @keyframes blink {
-
-  from,
-  to {
-    opacity: 1;
-  }
-
   50% {
     opacity: 0;
   }
@@ -257,11 +234,52 @@ h2,
 
 .sparkle-trail {
   position: absolute;
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   background: white;
   border-radius: 50%;
   pointer-events: none;
   z-index: 999;
-  filter: blur(2px);
+  filter: blur(1px);
+}
+
+/* Desktop Styles */
+@media (min-width: 768px) {
+  .app-container {
+    padding: 2rem;
+  }
+
+  .bear-sticker {
+    width: 120px;
+  }
+
+  .bear-left {
+    bottom: 20px;
+    left: 20px;
+  }
+
+  .bear-right {
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .love-letter-fold {
+    padding: 2.5rem;
+    transform: rotate(-1deg);
+    box-shadow: 10px 10px 0px var(--pink-glow);
+  }
+
+  .lang-btn {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+
+  .reason-card {
+    font-size: 1rem;
+  }
+
+  .hug-btn {
+    font-size: 1rem;
+    padding: 12px 24px;
+  }
 }
